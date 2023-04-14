@@ -1,9 +1,20 @@
 # e-shop
 
-Ce projet nécessite les dépendances suivantes que vous utilisiez une docker ou une installation à la main la documentation d'installation des différentes dépendances ce trouve plus bas :
+## Ce projet nécessite les dépendances suivantes que vous utilisiez une docker ou une installation à la main la documentation d'installation des différentes dépendances ce trouve plus bas :
 - PHP 8.1
 - MySQL version 8.0.32
 - Composer version 2.5.5
+
+
+## Installation des dépendances
+### L'explication de l'installation des dépendances ce trouver en fin du Readme 
+Pour installer les dépendances, veuillez suivre les étapes ci-dessous :
+1. Assurez-vous que PHP 8.1, MySQL version 8.0.32 et Composer version 2.5.5 sont installés sur votre système.
+2. Clonez le projet depuis le dépôt Git.
+3. Prenez le site ce trouvant dans le dossier shopbase le dossier database contient la base de donnée à intégré dans votre SGBDR donc MariaDB ou MYsql
+4. Ouvrez une console et naviguez jusqu'au répertoire du projet.
+5. Exécutez la commande `composer install` pour installer les dépendances du projet.
+
 
 ## Configuration de la connexion à la base de données
 Aller dans le fichier global.php et modifier les information de connexion en conséquence :
@@ -11,19 +22,12 @@ Aller dans le fichier global.php et modifier les information de connexion en con
         'password' => '[MotDePasse]',
         'dsn' => 'mysql:dbname=[Nomdelabase];host=[hoteDeConnexion/ip];port=3306;charset=utf8',
 
-## Installation des dépendances
-Pour installer les dépendances, veuillez suivre les étapes ci-dessous :
-1. Assurez-vous que PHP 8.1, MySQL version 8.0.32 et Composer version 2.5.5 sont installés sur votre système.
-2. Clonez le projet depuis le dépôt Git.
-3. Ouvrez une console et naviguez jusqu'au répertoire du projet.
-4. Exécutez la commande `composer install` pour installer les dépendances du projet.
-
 ## Utilisation
 Une fois que toutes les dépendances sont installées et que la base de données est configurée, vous pouvez exécuter l'application en utilisant votre serveur PHP préféré.
 
-### Démarrage de l'application
+### Démarrage de l'application en local
 Pour démarrer l'application, veuillez suivre les étapes ci-dessous :
-1. Ouvrez une console et naviguez jusqu'au répertoire du projet.
+1. Ouvrez une console et naviguez jusqu'au répertoire du projet et aller dans le dossier public qui est le point d'entré du site.
 2. Exécutez la commande `php -S localhost:8000` pour lancer le serveur PHP intégré.
 3. Accédez à l'application en ouvrant un navigateur Web et en visitant `http://localhost:8000`.
 4. Pour accèder à l'interface admin du site utiliser les identifiants généré ci-dessous pour une première connexion ensuite supprimer le compte et créer un nouveau :
