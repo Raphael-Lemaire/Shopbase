@@ -1,4 +1,4 @@
-# e-shop
+# Shop Base
 
 ## Ce projet nécessite les dépendances suivantes que vous utilisiez une docker ou une installation à la main la documentation d'installation des différentes dépendances ce trouve plus bas :
 - PHP 8.1
