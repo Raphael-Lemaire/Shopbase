@@ -1,10 +1,12 @@
 # Shop Base
 
-## Ce projet nécessite les dépendances suivantes que vous utilisiez une docker ou une installation à la main 
+## Ce projet nécessite les dépendances suivantes que vous utilisiez une docker, un VM ou une installation local 
 
 - PHP 8.1
 - MySQL version 8.0.32
 - Composer version 2.5.5
+- Debian 11
+- Apache
 
 #### la documentation d'installation des différentes dépendances ce trouve plus bas
 
@@ -73,6 +75,24 @@ Le résultat retourné met bien en évidence la présence de PHP 8.1 dans sa der
 Installation des extensions de PHP 8.1
 
 sudo apt-get install php8.1-common php8.1-curl php8.1-bcmath php8.1-intl php8.1-mbstring php8.1-xmlrpc php8.1-mcrypt php8.1-mysql php8.1-gd php8.1-xml php8.1-cli php8.1-zip
+
+### Apache
+
+sudo a2enmod negotiation
+sudo a2enmod rewrite
+
+### Apache vhost
+
+DocumentRoot /path/to/project/public
+DirectoryIndex /index.php
+
+<Directory /path/to/project/public>
+    AllowOverride None
+    Order Allow,Deny
+    Allow from All
+
+    FallbackResource /index.php
+</Directory>
 
 ### COMPOSER
 
