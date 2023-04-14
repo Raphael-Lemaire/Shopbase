@@ -34,6 +34,7 @@ Pour démarrer l'application, veuillez suivre les étapes ci-dessous :
 4. Pour accèder à l'interface admin du site utiliser les identifiants généré ci-dessous pour une première connexion ensuite supprimer le compte et créer un nouveau :
 - Email : admin@admin.com
 - Mot de passe : admin
+5. si vous souhaitez avoir les erreurs en cas de modification du site vous pouvez aciver le mode developpeur en allant dans le fichier ce trouvant dans config/autoload/development.local.php et mettre true à la place de false.
 
 ## Installer les dépendances
 
