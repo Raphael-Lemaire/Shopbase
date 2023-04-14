@@ -1,0 +1,32 @@
+<div id="portfolio" class="portfolio row grid-container gutter-30">
+<?php
+						
+	foreach($products as $product)
+	{
+	?>
+
+			<article class="portfolio-item col-md-4 col-sm-6 col-12 <?="pf-".$product->name_color;?> <?="pf-".$product->name_category;?> <?="pf-".$product->name_manufacturer;?> <?="pf-".$product->name_year;?>" >
+				<div class="grid-inner">
+					<div class="portfolio-image">
+						<a href="<?= $this->url('nos-produits', ['action' => 'view', 'id' => $product->id]) ?>">
+							<img src="<?="./admin/img/".$product->product_img;?>" alt="Open Imagination">
+						</a>
+						<div class="bg-overlay">
+							<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
+								<a class="hover" href="<?= $this->url('nos-produits', ['action' => 'view', 'id' => $product->id]) ?>" class="hover overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350"><i class="icon-line-ellipsis"></i></a>
+							</div>
+						<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+
+					</div>
+					
+				</div>
+					<div class="portfolio-desc">
+						<h3><a href="#"><?= $product->name ?></a></h3>
+						<span><a href="#">Catégorie: <?= $product->name_category?></a> </span>
+						<span><a href="#">Année: <?= $product->name_year?></a></span>
+						<a data-id="<?= $product->id?>" href="#" class="button button-border button-dark button-rounded button-large ms-0 topmargin-sm ajout-panier">Ajouter au panier</a>
+					</div>
+				</div>
+			</article>
+
+			<?php } ?>

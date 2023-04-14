@@ -1,0 +1,41 @@
+
+<section id="page-title">
+
+			<div class="container clearfix">
+				<h1>Nos Produits</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="<?= $this->url('nos-produits');?>">Vue</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><?= $product->name ?></li>
+				</ol>
+			</div>
+
+		</section><!-- #page-title end -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container clearfix">
+					<div id="portfolio" class="portfolio row grid-container gutter-30">
+
+						<article class="portfolio-item col-md-4 col-sm-6 col-12 pf-media pf-icons">
+							<div class="grid-inner">
+								<div class="portfolio-image">
+									<h1><?= $product->name ?></h1>
+										<img src="<?="/admin/img/".$product->product_img;?>" alt="Open Imagination">
+									</a>
+								</div>
+								<div class="portfolio-desc col-lg-4 p-4 px-lg-5">
+									
+									<h3><?= $product->name_category?></h3>
+									<h3><?= $product->name_color ?></h3>
+									
+								</div>
+							<a data-id="<?= $product->id?>" href="#" class="button button-border button-dark button-rounded button-large ms-0 topmargin-sm ajout-panier">Ajouter au panier</a>
+							</div>
+						</article>
+					</div><!-- #portfolio end -->
+
+				</div>
+			</div>
+		</section><!-- #content end -->

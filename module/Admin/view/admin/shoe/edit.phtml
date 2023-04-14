@@ -1,0 +1,67 @@
+<?php
+// module/Album/view/shoe/shoe/edit.phtml:
+
+$title = 'Edit shoe';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$name = $form->get('name');
+$name->setAttribute('class', 'form-control');
+$name->setAttribute('placeholder', 'Shoe name');
+
+$color = $form->get('id_color');
+$color->setAttribute('class', 'form-control');
+$color->setAttribute('placeholder', 'Color');
+
+$manufacturer = $form->get('id_manufacturer');
+$manufacturer->setAttribute('class', 'form-control');
+$manufacturer->setAttribute('placeholder', 'Manufacturer');
+	
+$shoe_img = $form->get('shoe_img');
+$shoe_img->setAttribute('class', 'form-control');
+$shoe_img->setAttribute('type', 'file');
+$shoe_img->setAttribute('name', 'shoe_img');
+$shoe_img->setAttribute('id', 'shoe_img');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('admin_shoe', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->setAttribute('enctype', 'multipart/form-data');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($name) ?>
+    <?= $this->formElement($name) ?>
+    <?= $this->formElementErrors()->render($name, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($color) ?>
+    <?= $this->formElement($color) ?>
+    <?= $this->formElementErrors()->render($color, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($manufacturer) ?>
+    <?= $this->formElement($manufacturer) ?>
+    <?= $this->formElementErrors()->render($manufacturer, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+		<?= $this->formLabel($shoe_img) ?>
+		<?= $this->formElement($shoe_img) ?>
+    	<?= $this->formElementErrors()->render($shoe_img, ['class' => 'help-block']) ?>
+</div>
+
+<img src="/img/<?= $shoe->shoe_img; ?>" width="200"></br>
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

@@ -1,0 +1,29 @@
+<?php
+// module/Album/view/admin/admin/index.phtml:
+
+$title = 'Admin';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('admin_admin', ['action' => 'add']) ?>">Add new admin</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+	<th>Image</th>
+</tr>
+<?php foreach ($admins as $admin) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($admin->name) ?></td>
+        <td><?= $this->escapeHtml($admin->email) ?></td>
+		<td><img src="<?="./admin/img/".$admin->profil_img;?>"></td>
+		<td>
+            <a href="<?= $this->url('admin_admin', ['action' => 'edit', 'id' => $admin->id]) ?>">Edit</a>
+            <a href="<?= $this->url('admin_admin', ['action' => 'delete', 'id' => $admin->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

@@ -1,0 +1,26 @@
+<?php
+// module/Album/view/year/year/index.phtml:
+
+$title = 'My years';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('admin_year', ['action' => 'add']) ?>">Add new year</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($years as $year) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($year->name) ?></td>
+		<td>
+            <a href="<?= $this->url('admin_year', ['action' => 'edit', 'id' => $year->id]) ?>">Edit</a>
+            <a href="<?= $this->url('admin_year', ['action' => 'delete', 'id' => $year->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

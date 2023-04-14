@@ -1,0 +1,22 @@
+<?php
+// module/Album/view/admin/product/delete.phtml:
+
+$title = 'Delete productcart';
+$url   = $this->url('admin_product_cart', ['action' => 'delete', 'id' => $id]);
+
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+<p>
+    Are you sure that you want to delete
+	"<?= $products[$productcart->id_product]['name']; ?>",
+</p>
+
+<form action="<?= $url ?>" method="post">
+<div class="form-group">
+    <input type="hidden" name="id" value="<?= (int) $productcart->id ?>" />
+    <input type="submit" class="btn btn-danger" name="del" value="Yes" />
+    <input type="submit" class="btn btn-success" name="del" value="No" />
+</div>
+</form>

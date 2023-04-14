@@ -1,0 +1,26 @@
+<?php
+// module/Album/view/color/color/index.phtml:
+
+$title = 'My colors';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('admin_color', ['action' => 'add']) ?>">Add new color</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($colors as $color) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($color->name) ?></td>
+		<td>
+            <a href="<?= $this->url('admin_color', ['action' => 'edit', 'id' => $color->id]) ?>">Edit</a>
+            <a href="<?= $this->url('admin_color', ['action' => 'delete', 'id' => $color->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

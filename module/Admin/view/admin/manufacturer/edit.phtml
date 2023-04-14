@@ -1,0 +1,33 @@
+<?php
+// module/Album/view/manufacturer/manufacturer/edit.phtml:
+
+$title = 'Edit manufacturer';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$manufacturer = $form->get('name');
+$manufacturer->setAttribute('class', 'form-control');
+$manufacturer->setAttribute('placeholder', 'Color name');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('admin_manufacturer', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($manufacturer) ?>
+    <?= $this->formElement($manufacturer) ?>
+    <?= $this->formElementErrors()->render($manufacturer, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

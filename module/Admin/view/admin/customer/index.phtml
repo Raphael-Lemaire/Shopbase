@@ -1,0 +1,29 @@
+<?php
+// module/Album/view/admin/admin/index.phtml:
+
+$title = 'Customer';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('admin_customer', ['action' => 'add']) ?>">Add new customer</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+	<th>Image</th>
+</tr>
+<?php foreach ($customers as $customer) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($customer->name) ?></td>
+        <td><?= $this->escapeHtml($customer->email) ?></td>
+		<td><img src="<?="./admin/img/".$customer->profil_img;?>"></td>
+		<td>
+            <a href="<?= $this->url('admin_customer', ['action' => 'edit', 'id' => $customer->id]) ?>">Edit</a>
+            <a href="<?= $this->url('admin_customer', ['action' => 'delete', 'id' => $customer->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

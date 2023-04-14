@@ -1,0 +1,32 @@
+<?php
+// module/Album/view/shoe/shoe/index.phtml:
+
+$title = 'My shoes';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('admin_shoe', ['action' => 'add']) ?>">Add new shoe</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Color</th>
+	<th>Manufacturer</th>
+	<th>Image</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($shoes as $shoe) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($shoe->name) ?></td>
+        <td><?= $this->escapeHtml($shoe->name_color) ?></td>
+		<td><?= $this->escapeHtml($shoe->name_manufacturer) ?></td>
+		<td><img src="<?="./img/".$shoe->shoe_img;?>"></td>
+		<td>
+            <a href="<?= $this->url('admin_shoe', ['action' => 'edit', 'id' => $shoe->id]) ?>">Edit</a>
+            <a href="<?= $this->url('admin_shoe', ['action' => 'delete', 'id' => $shoe->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

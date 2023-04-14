@@ -1,0 +1,27 @@
+<?php
+// module/Album/view/cart/cart/index.phtml:
+
+$title = 'My carts';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('admin_cart', ['action' => 'add']) ?>">Add new cart</a>
+</p>
+
+<table class="table">
+<tr>
+	<th>Id_Cart</th>
+    <th>Customer_Name</th>
+</tr>
+<?php foreach ($carts as $cart) : ?>
+    <tr>
+		<td><?= $this->escapeHtml($cart->id) ?></td>
+        <td><?= $this->escapeHtml($cart->name_customer) ?></td>
+		<td>
+            <a href="<?= $this->url('admin_cart', ['action' => 'edit', 'id' => $cart->id]) ?>">Edit</a>
+            <a href="<?= $this->url('admin_cart', ['action' => 'delete', 'id' => $cart->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

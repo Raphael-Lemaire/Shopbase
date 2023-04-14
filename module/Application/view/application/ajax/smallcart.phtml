@@ -1,0 +1,15 @@
+<?php foreach($productcarts as $productcart) {?>
+<div class="top-cart-item">
+	<div class="top-cart-item-image">
+		<a href="#"><img src="admin/img/<?=$productcart->product_image;?>" alt="Blue Round-Neck Tshirt" /></a>
+	</div>
+	<div class="top-cart-item-desc">
+		<div class="top-cart-item-desc-title">
+			<a href="#"><?=$productcart->name_product;?></a>
+				<span class="top-cart-item-price d-block">$19.99</span>
+		</div>
+		<div class="top-cart-item-quantity">x <?=$productcart->quantity;?></div>
+	</div>
+</div>
+
+<?php } ?>

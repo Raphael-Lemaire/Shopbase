@@ -1,0 +1,33 @@
+<?php
+// module/Album/view/year/year/edit.phtml:
+
+$title = 'Edit year';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$year = $form->get('name');
+$year->setAttribute('class', 'form-control');
+$year->setAttribute('placeholder', 'Color name');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('admin_year', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($year) ?>
+    <?= $this->formElement($year) ?>
+    <?= $this->formElementErrors()->render($year, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

@@ -1,0 +1,33 @@
+<?php
+// module/Album/view/author/author/edit.phtml:
+
+$title = 'Edit author';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$author = $form->get('name');
+$author->setAttribute('class', 'form-control');
+$author->setAttribute('placeholder', 'Color name');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('admin_author', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($author) ?>
+    <?= $this->formElement($author) ?>
+    <?= $this->formElementErrors()->render($author, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

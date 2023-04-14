@@ -1,0 +1,28 @@
+<?php
+// module/Album/view/category/category/index.phtml:
+
+$title = 'My categories';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('admin_category', ['action' => 'add']) ?>">Add new category</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+	<th>Sub_category</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($categorys as $category) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($category->name) ?></td>
+		<td><?= $this->escapeHtml($category->sub_category) ?></td>
+		<td>
+            <a href="<?= $this->url('admin_category', ['action' => 'edit', 'id' => $category->id]) ?>">Edit</a>
+            <a href="<?= $this->url('admin_category', ['action' => 'delete', 'id' => $category->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

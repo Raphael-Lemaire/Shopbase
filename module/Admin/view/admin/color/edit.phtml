@@ -1,0 +1,33 @@
+<?php
+// module/Album/view/color/color/edit.phtml:
+
+$title = 'Edit color';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$color = $form->get('name');
+$color->setAttribute('class', 'form-control');
+$color->setAttribute('placeholder', 'Color name');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('admin_color', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($color) ?>
+    <?= $this->formElement($color) ?>
+    <?= $this->formElementErrors()->render($color, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

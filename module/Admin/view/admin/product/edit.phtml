@@ -1,0 +1,97 @@
+<?php
+// module/Album/view/product/product/edit.phtml:
+
+$title = 'Edit product';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$name = $form->get('name');
+$name->setAttribute('class', 'form-control');
+$name->setAttribute('placeholder', 'Product name');
+
+$author = $form->get('id_author');
+$author->setAttribute('class', 'form-control');
+$author->setAttribute('placeholder', 'Author');
+
+$year = $form->get('id_year');
+$year->setAttribute('class', 'form-control');
+$year->setAttribute('placeholder', 'Year');
+	
+$manufacturer = $form->get('id_manufacturer');
+$manufacturer->setAttribute('class', 'form-control');
+$manufacturer->setAttribute('placeholder', 'Manufacturer');
+	
+$color = $form->get('id_color');
+$color->setAttribute('class', 'form-control');
+$color->setAttribute('placeholder', 'Color');
+
+$category = $form->get('id_category');
+$category->setAttribute('class', 'form-control');
+$category->setAttribute('placeholder', 'Category');
+	
+$product_img = $form->get('product_img');
+$product_img->setAttribute('class', 'form-control');
+$product_img->setAttribute('type', 'file');
+$product_img->setAttribute('name', 'product_img');
+$product_img->setAttribute('id', 'product_img');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('admin_product', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->setAttribute('enctype', 'multipart/form-data');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($name) ?>
+    <?= $this->formElement($name) ?>
+    <?= $this->formElementErrors()->render($name, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($author) ?>
+    <?= $this->formElement($author) ?>
+    <?= $this->formElementErrors()->render($author, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($year) ?>
+    <?= $this->formElement($year) ?>
+    <?= $this->formElementErrors()->render($year, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($color) ?>
+    <?= $this->formElement($color) ?>
+    <?= $this->formElementErrors()->render($color, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($manufacturer) ?>
+    <?= $this->formElement($manufacturer) ?>
+    <?= $this->formElementErrors()->render($manufacturer, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($category) ?>
+    <?= $this->formElement($category) ?>
+    <?= $this->formElementErrors()->render($category, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+		<?= $this->formLabel($product_img) ?>
+		<?= $this->formElement($product_img) ?>
+    	<?= $this->formElementErrors()->render($product_img, ['class' => 'help-block']) ?>
+</div>
+
+<img src="/img/<?= $product->product_img; ?>" width="200"></br>
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

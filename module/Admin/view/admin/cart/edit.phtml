@@ -1,0 +1,35 @@
+<?php
+// module/Album/view/cart/cart/edit.phtml:
+
+$title = 'Edit cart';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+$customer = $form->get('id_customer');
+$customer->setAttribute('class', 'form-control');
+$customer->setAttribute('placeholder', 'Author');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('admin_cart', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->setAttribute('enctype', 'multipart/form-data');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($customer) ?>
+    <?= $this->formElement($customer) ?>
+    <?= $this->formElementErrors()->render($customer, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

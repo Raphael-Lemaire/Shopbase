@@ -1,0 +1,55 @@
+<?php
+// module/Album/view/product/product/edit.phtml:
+
+$title = 'Add productCart';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+$product = $form->get('id_product');
+$product->setAttribute('class', 'form-control');
+$product->setAttribute('placeholder', 'Author');
+
+$cart = $form->get('id_cart');
+$cart->setAttribute('class', 'form-control');
+$cart->setAttribute('placeholder', 'Year');
+	
+$quantity = $form->get('quantity');
+$quantity->setAttribute('class', 'form-control');
+$quantity->setAttribute('placeholder', 'quantity');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('ajax', [
+    'action' => 'addcart',
+    'id_product'     => $id,
+]));
+$form->setAttribute('enctype', 'multipart/form-data');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($product) ?>
+    <?= $this->formElement($product) ?>
+    <?= $this->formElementErrors()->render($product, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($cart) ?>
+    <?= $this->formElement($cart) ?>
+    <?= $this->formElementErrors()->render($cart, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($quantity) ?>
+    <?= $this->formElement($quantity) ?>
+    <?= $this->formElementErrors()->render($quantity, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id_product'));
+echo $this->form()->closeTag();

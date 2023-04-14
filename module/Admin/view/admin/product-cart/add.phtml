@@ -1,0 +1,56 @@
+<?php
+$title = 'Add new productcart';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+// This provides a default CSS class and placeholder text for the product element:
+$product = $form->get('id_product');
+$product->setAttribute('class', 'form-control');
+$product->setAttribute('placeholder', 'Author');
+	
+// This provides a default CSS class and placeholder text for the cart element:
+$cart = $form->get('id_cart');
+$cart->setAttribute('class', 'form-control');
+$cart->setAttribute('placeholder', 'Year');
+
+$quantity = $form->get('quantity');
+$quantity->setAttribute('class', 'form-control');
+$quantity->setAttribute('placeholder', 'quantity');
+// This provides CSS classes for the submit button:
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('admin_product_cart', ['action' => 'add']));
+$form->setAttribute('enctype', 'multipart/form-data');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+      // label, element, and errors separately within ?>
+
+<div class="form-group">
+    <?= $this->formLabel($product) ?>
+    <?= $this->formElement($product) ?>
+    <?= $this->formElementErrors()->render($product, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($cart) ?>
+    <?= $this->formElement($cart) ?>
+    <?= $this->formElementErrors()->render($cart, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($quantity) ?>
+    <?= $this->formElement($quantity) ?>
+    <?= $this->formElementErrors()->render($quantity, ['class' => 'help-block']) ?>
+</div>
+
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

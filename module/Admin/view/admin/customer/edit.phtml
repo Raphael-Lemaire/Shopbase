@@ -1,0 +1,68 @@
+<?php
+// module/Album/view/profil/profil/edit.phtml:
+
+$title = 'Edit customer';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+$name = $form->get('name');
+$name->setAttribute('class', 'form-control');
+$name->setAttribute('placeholder', 'Admin name');
+
+$password = $form->get('password');
+$password->setAttribute('class', 'form-control');
+$password->setAttribute('type', 'password');
+$password->setAttribute('placeholder', 'Password');
+
+$email = $form->get('email');
+$email->setAttribute('class', 'form-control');
+$email->setAttribute('placeholder', 'Email');
+	
+$profil_img = $form->get('profil_img');
+$profil_img->setAttribute('class', 'form-control');
+$profil_img->setAttribute('type', 'file');
+$profil_img->setAttribute('name', 'profil_img');
+$profil_img->setAttribute('id', 'profil_img');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('admin_customer', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->setAttribute('enctype', 'multipart/form-data');
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($name) ?>
+    <?= $this->formElement($name) ?>
+    <?= $this->formElementErrors()->render($name, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($password) ?>
+    <?= $this->formElement($password) ?>
+    <?= $this->formElementErrors()->render($password, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($email) ?>
+    <?= $this->formElement($email) ?>
+    <?= $this->formElementErrors()->render($email, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+		<?= $this->formLabel($profil_img) ?>
+		<?= $this->formElement($profil_img) ?>
+    	<?= $this->formElementErrors()->render($profil_img, ['class' => 'help-block']) ?>
+</div>
+
+<img src="/admin/img/<?= $customer->profil_img; ?>" width="200"></br>
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();
