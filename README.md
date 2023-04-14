@@ -1,10 +1,11 @@
 # Shop Base
 
-## Ce projet nécessite les dépendances suivantes que vous utilisiez une docker ou une installation à la main la documentation d'installation des différentes dépendances ce trouve plus bas :
+## Ce projet nécessite les dépendances suivantes que vous utilisiez une docker ou une installation à la main 
+
 - PHP 8.1
 - MySQL version 8.0.32
 - Composer version 2.5.5
-
+#### la documentation d'installation des différentes dépendances ce trouve plus bas
 
 ## Installation des dépendances
 ### L'explication de l'installation des dépendances ce trouver en fin du Readme 
