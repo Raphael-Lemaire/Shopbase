@@ -1,6 +1,6 @@
 # Shop Base
 
-## Ce projet nécessite les dépendances suivantes que vous utilisiez une docker, un VM ou une installation local 
+## Ce projet nécessite les dépendances suivantes que vous utilisiez une docker, une VM ou une installation local 
 
 - PHP 8.1
 - MySQL version 8.0.32
