@@ -40,6 +40,7 @@ class LoginController extends AbstractActionController
 			//d($user);
 			$_SESSION["admin"] = serialize($user);
 			//d(serialize($user));
+			return $this->redirect()->toRoute('admin_admin');
 		
 			
 		 } else {
